@@ -1,4 +1,4 @@
-# emma-empanadas-marketing-data-24-
+[Q2_2024_QuickBooks_Retention_Data.csv](https://github.com/user-attachments/files/19674935/Q2_2024_QuickBooks_Retention_Data.csv)# emma-empanadas-marketing-data-24-
 Weekly marketing data for a empanada catering business, covering Q4 2023 to Q3 2024.
 Emma's Empanadas: Q4 2023 – Q3 2024 Marketing Analysis
 Overview
@@ -89,6 +89,120 @@ df.to_csv(expanded_file_path, index=False)
 import ace_tools as tools; tools.display_dataframe_to_user(name="Expanded Marketing Dataset", dataframe=df)
 
 expanded_file_path
+[Uploa
+-- Table Creation
+CREATE TABLE emmas_empanadas_marketing (
+    month VARCHAR(20),
+    social_followers INT,
+    website_orders INT
+);
+
+-- Insert Data
+INSERT INTO emmas_empanadas_marketing (month, social_followers, website_orders)
+VALUES 
+('January', 150, 45),
+('February', 230, 78),
+('March', 390, 130),
+('April', 520, 165);
+
+-- Monthly Growth in Followers
+SELECT 
+    month,
+    social_followers,
+    LAG(social_followers) OVER (ORDER BY 
+        CASE month
+            WHEN 'January' THEN 1
+            WHEN 'February' THEN 2
+            WHEN 'March' THEN 3
+            WHEN 'April' THEN 4
+        END
+    ) AS prev_followers,
+    social_followers - LAG(social_followers) OVER (ORDER BY 
+        CASE month
+            WHEN 'January' THEN 1
+            WHEN 'February' THEN 2
+            WHEN 'March' THEN 3
+            WHEN 'April' THEN 4
+        END
+    ) AS growth
+FROM emmas_empanadas_marketing;
+
+-- Conversion Rate of Followers to Orders
+SELECT 
+    month,
+    social_followers,
+    website_orders,
+    ROUND((website_orders * 1.0 / social_followers) * 100, 2) AS conversion_rate_percentage
+FROM emmas_empanadas_marketing;
+
+-- Cumulative Orders Over Time
+SELECT 
+    month,
+    SUM(website_orders) OVER (
+        ORDER BY 
+            CASE month
+                WHEN 'January' THEN 1
+                WHEN 'February' THEN 2
+                WHEN 'March' THEN 3
+                WHEN 'April' THEN 4
+            END
+    ) AS cumulative_orders
+FROM emmas_empanadas_marketing;
+[Uploading Q2_2024_QuickBFirm ID,Firm Name,Q2 2024 Revenue (USD),Attached Products,Retained Q3 2024
+Firm_001,Accounting Co 1,221958,QB Time,True
+Firm_002,Accounting Co 2,771155,QB Payments,True
+Firm_003,Accounting Co 3,231932,None,True
+Firm_004,Accounting Co 4,1514414,QB Payments,False
+Firm_005,Accounting Co 5,359178,QB Payroll,True
+Firm_006,Accounting Co 6,1792743,None,True
+Firm_007,Accounting Co 7,210268,QB Time + Payments,True
+Firm_008,Accounting Co 8,832180,All Products,True
+Firm_009,Accounting Co 9,1203462,QB Payroll + Payments,True
+Firm_010,Accounting Co 10,237337,QB Payroll,False
+Firm_011,Accounting Co 11,1099890,None,True
+Firm_012,Accounting Co 12,1670006,QB Payments,False
+Firm_013,Accounting Co 13,1236074,QB Time,True
+Firm_014,Accounting Co 14,1012756,None,True
+Firm_015,Accounting Co 15,275203,QB Time,False
+Firm_016,Accounting Co 16,1339911,None,False
+Firm_017,Accounting Co 17,378167,QB Time + Payments,True
+Firm_018,Accounting Co 18,141090,QB Payroll,False
+Firm_019,Accounting Co 19,429365,QB Payments,True
+Firm_020,Accounting Co 20,1213396,QB Payroll,True
+Firm_021,Accounting Co 21,887201,QB Time,True
+Firm_022,Accounting Co 22,1470455,QB Time,True
+Firm_023,Accounting Co 23,1866891,QB Payroll,True
+Firm_024,Accounting Co 24,427069,All Products,True
+Firm_025,Accounting Co 25,1925573,QB Payroll + Time,True
+Firm_026,Accounting Co 26,1347617,QB Time + Payments,True
+Firm_027,Accounting Co 27,891743,QB Payroll + Payments,True
+Firm_028,Accounting Co 28,203355,QB Payments,False
+Firm_029,Accounting Co 29,1384372,QB Time + Payments,True
+Firm_030,Accounting Co 30,1362752,None,True
+Firm_031,Accounting Co 31,284779,QB Payroll,False
+Firm_032,Accounting Co 32,1496025,None,True
+Firm_033,Accounting Co 33,1570485,QB Payroll,True
+Firm_034,Accounting Co 34,1089436,QB Time,True
+Firm_035,Accounting Co 35,1407371,QB Payroll,True
+Firm_036,Accounting Co 36,586232,QB Payroll + Payments,False
+Firm_037,Accounting Co 37,1017040,QB Time,False
+Firm_038,Accounting Co 38,1648762,QB Payroll,True
+Firm_039,Accounting Co 39,256730,QB Time,False
+Firm_040,Accounting Co 40,1533257,None,False
+Firm_041,Accounting Co 41,1298079,QB Payroll + Payments,True
+Firm_042,Accounting Co 42,754811,None,False
+Firm_043,Accounting Co 43,627035,All Products,True
+Firm_044,Accounting Co 44,748143,QB Payroll + Time,False
+Firm_045,Accounting Co 45,1600942,QB Payroll,False
+Firm_046,Accounting Co 46,165725,None,True
+Firm_047,Accounting Co 47,1278557,QB Payroll + Payments,True
+Firm_048,Accounting Co 48,184654,QB Payroll + Time,True
+Firm_049,Accounting Co 49,1053277,QB Payroll + Time,True
+Firm_050,Accounting Co 50,691723,QB Payroll + Time,False
+ooks_Retention_Data.csv…]()
+
+ding emmas_empanadas_marketing_analysis.sql…]()
+
 
 emma-empanadas-marketing-data/
 │
