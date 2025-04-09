@@ -51,13 +51,21 @@ import pandas as pd
 import pandas as pd
 import numpy as np
 from datetime import datetime
+<h5>
+Enhances an existing marketing dataset by adding key performance indicators (KPIs) across categories like engagement, conversion, efficiency, and retention. These new metrics help paint a clearer picture of digital performance, customer behavior, and marketing ROI for Emma’s Empanadas. By introducing values like Conversion Rate, Return on Ad Spend, and Repeat Purchase Rate, the dataset becomes a comprehensive tool for data storytelling and decision-making.
+</h5>
+
+<div class="sourceCode">
+<pre><code>import pandas as pd
+import numpy as np
+from datetime import datetime
 
 # Load the existing dataset
-file_path = '/mnt/data/Emma_s_Empanadas_Q4_2023_-_Q3_2024_Marketing_Data.csv'
+file_path = 'Emma_s_Empanadas_Q4_2023_-_Q3_2024_Marketing_Data.csv'
 df = pd.read_csv(file_path)
 
 # Add new KPI columns with mock data
-np.random.seed(42)  # For reproducibility
+np.random.seed(42)
 
 # Engagement & Reach
 df['Website Visits'] = np.random.randint(800, 2000, size=len(df))
@@ -83,8 +91,12 @@ df['Customer Lifetime Value (CLV)'] = np.random.uniform(100.0, 400.0, size=len(d
 df['Churn Rate (%)'] = np.random.uniform(5.0, 20.0, size=len(df)).round(2)
 
 # Save the expanded file
-expanded_file_path = '/mnt/data/Emma_s_Empanadas_Expanded_Marketing_Data.csv'
-df.to_csv(expanded_file_path, index=False)
+df.to_csv('Emma_s_Empanadas_Expanded_Marketing_Data.csv', index=False)
+</code></pre>
+</div>
+
+![Example Marketing Data Plot](https://placehold.co/800x400?text=Marketing+KPI+Plot) <!-- Replace this with a real plot screenshot if needed -->
+
 
 import ace_tools as tools; tools.display_dataframe_to_user(name="Expanded Marketing Dataset", dataframe=df)
 
