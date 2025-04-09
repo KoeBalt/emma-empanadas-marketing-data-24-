@@ -46,6 +46,60 @@ Customer Segment
 Campaign Date
 
 Tools Used
+import pandas as pd
+
+import pandas as pd
+import numpy as np
+from datetime import datetime
+
+# Load the existing dataset
+file_path = '/mnt/data/Emma_s_Empanadas_Q4_2023_-_Q3_2024_Marketing_Data.csv'
+df = pd.read_csv(file_path)
+
+# Add new KPI columns with mock data
+np.random.seed(42)  # For reproducibility
+
+# Engagement & Reach
+df['Website Visits'] = np.random.randint(800, 2000, size=len(df))
+df['Unique Visitors'] = (df['Website Visits'] * np.random.uniform(0.7, 0.9, size=len(df))).astype(int)
+
+# Conversion & Revenue
+df['Orders'] = np.random.randint(50, 200, size=len(df))
+df['Revenue'] = df['Orders'] * np.random.uniform(10.0, 25.0, size=len(df)).round(2)
+df['Average Order Value (AOV)'] = (df['Revenue'] / df['Orders']).round(2)
+df['Conversion Rate (%)'] = ((df['Orders'] / df['Website Visits']) * 100).round(2)
+df['Cart Abandonment Rate (%)'] = np.random.uniform(20.0, 40.0, size=len(df)).round(2)
+
+# Marketing Efficiency
+df['Cost per Click (CPC)'] = np.random.uniform(0.5, 2.5, size=len(df)).round(2)
+df['Cost per Acquisition (CPA)'] = np.random.uniform(5.0, 20.0, size=len(df)).round(2)
+df['Return on Ad Spend (ROAS)'] = np.random.uniform(1.5, 4.0, size=len(df)).round(2)
+df['Email Bounce Rate (%)'] = np.random.uniform(0.5, 5.0, size=len(df)).round(2)
+df['Unsubscribe Rate (%)'] = np.random.uniform(0.1, 2.0, size=len(df)).round(2)
+
+# Retention & Loyalty
+df['Repeat Purchase Rate (%)'] = np.random.uniform(10.0, 30.0, size=len(df)).round(2)
+df['Customer Lifetime Value (CLV)'] = np.random.uniform(100.0, 400.0, size=len(df)).round(2)
+df['Churn Rate (%)'] = np.random.uniform(5.0, 20.0, size=len(df)).round(2)
+
+# Save the expanded file
+expanded_file_path = '/mnt/data/Emma_s_Empanadas_Expanded_Marketing_Data.csv'
+df.to_csv(expanded_file_path, index=False)
+
+import ace_tools as tools; tools.display_dataframe_to_user(name="Expanded Marketing Dataset", dataframe=df)
+
+expanded_file_path
+
+emma-empanadas-marketing-data/
+│
+├── marketing_data_generator.py          # Script to generate and expand mock data
+├── schema.sql                           # SQL schema for MySQL table
+├── insert_marketing_data.sql            # INSERTs (optional, or generate on the fly)
+├── Emma_s_Empanadas_Expanded_Marketing_Data.csv  # Final dataset
+├── requirements.txt                     # Dependencies
+└── README.md                            # Docs & instructions
+
+
 SQL (PostgreSQL-style syntax)
 
 Tableau (for visualization)
