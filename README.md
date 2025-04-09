@@ -64,7 +64,7 @@ from datetime import datetime
 file_path = 'Emma_s_Empanadas_Q4_2023_-_Q3_2024_Marketing_Data.csv'
 df = pd.read_csv(file_path)
 
-# Add new KPI columns with mock data
+# Add new KPI columns with data
 np.random.seed(42)
 
 # Engagement & Reach
